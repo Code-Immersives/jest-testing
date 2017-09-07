@@ -7,10 +7,12 @@
 // }
 
 class Hangman {
-  constructor () {
-
+  constructor (word) {
+    this.objective = word
   }
-
+  guess (letter) {
+    return false
+  }
 }
 
 export default Hangman // => export only one item
