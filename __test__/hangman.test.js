@@ -18,4 +18,8 @@ describe('Hangman Class', () => {
     let myGame = new Hangman('superman')
     expect(myGame.guess('i')).toBeFalsy()
   })
+  test('Guess input is a single character', () => {
+    let myGame = new Hangman('superman')
+    expect(myGame.guess('si').toThrow('you can only guess one letter at a time'))
+  })
 })

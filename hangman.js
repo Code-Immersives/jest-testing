@@ -11,7 +11,8 @@ class Hangman {
     this.objective = word
   }
   guess (letter) {
-    return false
+    let isMatch = this.objective.includes(letter)
+    return isMatch
   }
 }
 
