@@ -20,6 +20,38 @@ describe('Hangman Class', () => {
   })
   test('Guess input is a single character', () => {
     let myGame = new Hangman('superman')
-    expect(myGame.guess('si').toThrow('you can only guess one letter at a time'))
+    expect(myGame.guess('si')).toMatch('you can only guess one letter at a time')
   })
+  test('keep track of the number of incorrect guesses', () => {
+    let myGame = new Hangman('superman')
+    myGame.guess('s')
+    myGame.guess('i')
+    myGame.guess('l')
+    expect(myGame.numOfGuesses).toEqual(2)
+  })
+  test('loose the game if guesses are greater than 6', () => {
+    let myGame = new Hangman('superman')
+    myGame.guess('v')
+    myGame.guess('i')
+    myGame.guess('l')
+    myGame.guess('w')
+    myGame.guess('q')
+    expect(myGame.guess('b')).toMatch('x.x')
+  })
+  test('did the player figure out the word', () => {
+    let myGame = new Hangman('superman')
+    myGame.guess('s')
+    myGame.guess('i')
+    myGame.guess('u')
+    myGame.guess('p')
+    myGame.guess('e')
+    myGame.guess('r')
+    myGame.guess('m')
+    myGame.guess('n')
+    expect(myGame.guess('a')).toMatch('you win')
+  })
+
+  // will not allow numbers
+  // is not case sensative
+  // guess the whole word
 })
